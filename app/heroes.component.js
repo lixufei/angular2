@@ -33,6 +33,19 @@ var HeroesComponent = (function () {
         this.router.navigate(['/detail', this.selectedHero.id]);
     };
     ;
+    HeroesComponent.prototype.add = function (heroName) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this.heroService.create(heroName)
+            .then(function (hero) {
+            _this.heroes.push(hero);
+            _this.selectedHero = null;
+        });
+    };
+    ;
     HeroesComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
